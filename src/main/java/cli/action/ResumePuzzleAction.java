@@ -9,11 +9,9 @@ import io.bretty.console.view.MenuView;
 class ResumePuzzleAction extends ActionView {
 
     private Game game;
-    private MenuView resumePuzzleMenu = new ResumePuzzleMenu();
 
     public ResumePuzzleAction(Game game){
-        super("Continuing game.PuzzleGame 15 game.Game...", "Resume");
-        this.setParentView(resumePuzzleMenu);
+        super("Resuming Puzzle 15 Game...", "Resume");
         this.game = game;
     }
 
@@ -22,7 +20,10 @@ class ResumePuzzleAction extends ActionView {
         Thread t = new Thread(){
             public void run(){
                 System.out.println("ON the EXIT");
-                resumePuzzleMenu.display();
+                boolean confirmed = this.confirmDialog("Make booking now?");
+                if(confirmed){
+                    this.println("Your taxi is on the way!");
+                }
             }
         };
 

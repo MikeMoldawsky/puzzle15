@@ -6,7 +6,6 @@ import game.PuzzleBoardGame;
 import io.bretty.console.view.ActionView;
 import io.bretty.console.view.MenuView;
 
-
 public class NewPuzzleAction extends ActionView {
     private BoardGame puzzle = new PuzzleBoardGame();
 

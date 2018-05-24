@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class PuzzleBoardGame implements BoardGame {
-
     static public String title = "Welcome to The game - Puzzle 15";
     static private int blankNumber = 16;
     static private int size = 4;
@@ -14,7 +13,6 @@ public class PuzzleBoardGame implements BoardGame {
     // Board empty square indexes
     private int blankRow = 3;
     private int blankCol = 3;
-
 
     public PuzzleBoardGame(){
         this.board = getRandomBoard();
@@ -46,7 +44,7 @@ public class PuzzleBoardGame implements BoardGame {
         return false;
     }
 
-    public void moveNumber(Integer numberChosen) {
+    public void moveNumberByValue(Integer numberChosen) {
         System.out.println("moving a number....");
         for (int i = 0; i < this.board.length; i++) {
             for (int j = 0; j < this.board[i].length; j++) {
@@ -67,16 +65,16 @@ public class PuzzleBoardGame implements BoardGame {
 
     public boolean isCompleted() {
         Integer prev = null;
-        for (int i = 0; i < this.board.length; i++) {
-            for (int j = 0; j < this.board[i].length; j++) {
-                if (prev != null && this.board[i][j] != prev + 1) return false;
-                prev = this.board[i][j];
+        for (int[] row : this.board) {
+            for (int cur : row) {
+                if (prev != null && cur != prev + 1) return false;
+                prev = cur;
             }
         }
         return true;
     }
 
-    public Integer[] getMovingNumbers() {
+    public Integer[] getMovingNumbersValues() {
         List<Integer> numbers = new ArrayList<Integer>();
         if(this.blankRow - 1 >= 0) numbers.add(this.board[this.blankRow-1][this.blankCol]); //up Of blank
         if(this.blankRow  + 1 < size) numbers.add(this.board[this.blankRow+1][this.blankCol]); //down Of blank
@@ -92,18 +90,16 @@ public class PuzzleBoardGame implements BoardGame {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < this.board.length; i++) {
-            for (int j = 0; j < this.board[i].length; j++) {
-                int number = this.board[i][j];
-                String square = null;
-                if (number == blankNumber){ // made 16 as the empty square
+        for (int[] row : this.board) {
+            for (int number : row) {
+                String square;
+                if (number == blankNumber) { // made 16 as the empty square
                     square = "|    ";
-                } else if (number < 10){
+                } else if (number < 10) {
                     square = "|  " + number + " ";
                 } else {
                     square = "| " + number + " ";
                 }
-
                 sb.append(square);
             }
             sb.append(" |\n");

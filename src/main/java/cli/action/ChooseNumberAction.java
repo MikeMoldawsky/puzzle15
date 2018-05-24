@@ -19,7 +19,7 @@ public class ChooseNumberAction extends ActionView {
 
     @Override
     public void executeCustomAction() {
-        this.puzzle.moveNumber(this.numberChosen);
+        this.puzzle.moveNumberByValue(this.numberChosen);
         if(this.puzzle.isCompleted()){
             System.out.println("CONGRATS");
         } else{

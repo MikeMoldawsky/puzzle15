@@ -69,6 +69,23 @@ public class PuzzleGame implements Game {
 
     @Override
     public String toString() {
-        return Arrays.deepToString(this.board);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < this.board.length; i++) {
+            for (int j = 0; j < this.board[i].length; j++) {
+                int number = this.board[i][j];
+                String square = null;
+                if (number == 0){ // make 0 as the empty board
+                    square = "|    ";
+                } else if (number < 10){
+                    square = "|  " + number + " ";
+                } else {
+                    square = "| " + number + " ";
+                }
+
+                sb.append(square);
+            }
+            sb.append(" |\n");
+        }
+        return sb.toString();
     }
 }

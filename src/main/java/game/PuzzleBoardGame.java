@@ -23,22 +23,18 @@ public class PuzzleBoardGame implements BoardGame {
         for (int i = 1; i < size*size; i++){
             numbers.add(i);
         }
-//        do {
-////            Collections.shuffle(numbers);
-//
-//        } while(!isShuffled(numbers));
+        // Shuffling the Board
+        do {
+            Collections.shuffle(numbers);
+        } while(!isShuffled(numbers));
 
         int[][] board = new int[size][size];
         for(int i = 0; i < numbers.size(); i++){
             board[i/size][i%size] = numbers.get(i);
         }
 
+        //Setting right most down corner with the Blank number
         board[blankRow][blankCol] = blankNumber;
-        board[blankRow][blankCol] = board[2][3];
-
-        board[2][3] = blankNumber;
-        blankRow = 2;
-        blankCol = 3;
         return board;
     }
 

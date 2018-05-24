@@ -44,7 +44,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <finalName>uber-${artifactId}-${version}</finalName>
+                    <finalName>puzzle-${artifactId}-${version}</finalName>
                 </configuration>
             </plugin>
         </plugins>

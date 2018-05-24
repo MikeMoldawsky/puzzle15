@@ -5,11 +5,12 @@ import game.PuzzleBoardGame;
 import io.bretty.console.view.MenuView;
 
 public class MainPuzzleMenu extends MenuView {
-    public MainPuzzleMenu(String runningTitle, String nameInParentMenu) {
-        super(runningTitle, nameInParentMenu);
+    public static void startNewGame(){
+        MenuView rootMenu = new MainPuzzleMenu();
+        rootMenu.display();
     }
 
-    public MainPuzzleMenu(){
+    private MainPuzzleMenu(){
         super(PuzzleBoardGame.title, "");
         this.addMenuItem(new NewPuzzleAction());
     }

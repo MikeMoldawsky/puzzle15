@@ -23,15 +23,22 @@ public class PuzzleBoardGame implements BoardGame {
         for (int i = 1; i < size*size; i++){
             numbers.add(i);
         }
-        do {
-            Collections.shuffle(numbers);
-        } while(!isShuffled(numbers));
+//        do {
+////            Collections.shuffle(numbers);
+//
+//        } while(!isShuffled(numbers));
 
         int[][] board = new int[size][size];
         for(int i = 0; i < numbers.size(); i++){
-            board[i/4][i%4] = numbers.get(i);
+            board[i/size][i%size] = numbers.get(i);
         }
-        board[3][3] = 16;
+
+        board[blankRow][blankCol] = blankNumber;
+        board[blankRow][blankCol] = board[2][3];
+
+        board[2][3] = blankNumber;
+        blankRow = 2;
+        blankCol = 3;
         return board;
     }
 
@@ -45,7 +52,6 @@ public class PuzzleBoardGame implements BoardGame {
     }
 
     public void moveNumberByValue(Integer numberChosen) {
-        System.out.println("moving a number....");
         for (int i = 0; i < this.board.length; i++) {
             for (int j = 0; j < this.board[i].length; j++) {
                 if (numberChosen == this.board[i][j]){

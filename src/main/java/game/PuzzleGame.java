@@ -1,9 +1,44 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class PuzzleGame implements Game {
 
     static public String title = "Welcome to The game - Puzzle 15";
+    private int size = 4;
+    private int[][] board;
+    public PuzzleGame(){
+        this.board = getRandomBoard();
+    }
 
+    private int[][] getRandomBoard(){
+        List<Integer> numbers = new ArrayList<Integer>();
+        for (int i = 1; i < this.size*this.size; i++){
+            numbers.add(i);
+        }
+
+        do {
+            Collections.shuffle(numbers);
+        } while(!isShuffled(numbers));
+
+        int[][] board = new int[this.size][this.size];
+        for(int i = 0; i < numbers.size(); i++){
+            board[i/4][i%4] = numbers.get(i);
+        }
+        return board;
+    }
+
+    private boolean isShuffled(List<Integer> numbers) {
+        Integer prev = null;
+        for (Integer cur: numbers) {
+            if(prev != null && prev + 1 != cur) return true;
+            prev = cur;
+        }
+        return false;
+    }
 
     public void start() {
         System.out.println("Starting....");
@@ -28,8 +63,12 @@ public class PuzzleGame implements Game {
     }
 
     public void draw() {
-        System.out.println("IM DRAWING\n#####################\n#####################\n#####################\n");
+        System.out.println(this.toString());
 
     }
 
+    @Override
+    public String toString() {
+        return Arrays.deepToString(this.board);
+    }
 }

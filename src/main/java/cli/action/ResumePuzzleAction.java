@@ -17,17 +17,17 @@ class ResumePuzzleAction extends ActionView {
 
     @Override
     public void executeCustomAction() {
-        Thread t = new Thread(){
-            public void run(){
-                System.out.println("ON the EXIT");
-                boolean confirmed = this.confirmDialog("Make booking now?");
-                if(confirmed){
-                    this.println("Your taxi is on the way!");
-                }
-            }
-        };
+//        Thread t = new Thread(){
+//            public void run(){
+//                System.out.println("ON the EXIT");
+//                boolean confirmed = this.confirmDialog("Make booking now?");
+//                if(confirmed){
+//                    this.println("Your taxi is on the way!");
+//                }
+//            }
+//        };
 
-        Runtime.getRuntime().addShutdownHook(t);
+//        Runtime.getRuntime().addShutdownHook(t);
 
         game.resume();
     }

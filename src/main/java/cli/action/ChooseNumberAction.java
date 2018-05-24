@@ -1,43 +1,34 @@
 package cli.action;
 
-import cli.menu.ResumePuzzleMenu;
+import cli.menu.ChooseNumberMenu;
 import game.Game;
-import game.PuzzleGame;
 import io.bretty.console.view.ActionView;
 import io.bretty.console.view.MenuView;
 
 
 public class ChooseNumberAction extends ActionView {
+    private Integer numberChosen;
+    private Game puzzle;
 
 
-    private Game puzzle = new PuzzleGame();
-    private MenuView quitGameMenu = new ResumePuzzleMenu();
-
-
-    public ChooseNumberAction(MenuView mainMenu){
-        super("Starting new Puzzle 15 Game...", "Play New Puzzle 15 Game");
-//        quitGameMenu.addMenuItem(new ResumePuzzleAction());
-        this.setParentView(mainMenu);
-        quitGameMenu.addMenuItem(new ResumePuzzleAction(puzzle));
-
+    public ChooseNumberAction(Game puzzle, Integer num) {
+        super("The chosen number is: " + num, "Move number: " + num);
+        this.puzzle = puzzle;
+        this.numberChosen = num;
     }
+
 
     @Override
     public void executeCustomAction() {
-
-        Thread t = new Thread(){
-            public void run(){
-                System.out.println("ON the EXIT");
-                quitGameMenu.display();
-            }
-        };
-
-        Runtime.getRuntime().addShutdownHook(t);
-//        Runtime.getRuntime().removeShutdownHook(t);
-
-            this.puzzle.start();
-        System.out.println("DONE");
+        this.puzzle.moveNumber(this.numberChosen);
+        if(this.puzzle.isCompleted()){
+            System.out.println("CONGRATS");
+        } else{
+            ChooseNumberMenu chooseNumberMenu = new ChooseNumberMenu(this.puzzle);
+            chooseNumberMenu.display();
+        }
     }
+
 
     @Override
     public void onQuit(){

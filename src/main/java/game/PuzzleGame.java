@@ -6,12 +6,29 @@ public class PuzzleGame implements Game {
 
 
     public void start() {
-        while(true){}
+        System.out.println("Starting....");
+
     }
 
     public void resume() {
-        System.out.println("Resuiming");
-        while(true){}
+        System.out.println("Resuiming....");
+
+    }
+
+    public void moveNumber(Integer numberChosen) {
+        System.out.println("moving a number....");
+    }
+
+    public boolean isCompleted() {
+        return false;
+    }
+
+    public Integer[] getMovingNumbers() {
+        return new Integer[] {1,2,3,4};
+    }
+
+    public void draw() {
+        System.out.println("IM DRAWING\n#####################\n#####################\n#####################\n");
 
     }
 

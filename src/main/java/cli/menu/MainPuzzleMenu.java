@@ -12,8 +12,7 @@ public class MainPuzzleMenu extends MenuView {
 
     public MainPuzzleMenu(){
         super(PuzzleGame.title, "");
-        ActionView newPuzzleAction = new NewPuzzleAction(this);
-        this.addMenuItem(newPuzzleAction);
+        this.addMenuItem(new NewPuzzleAction());
     }
 
     @Override

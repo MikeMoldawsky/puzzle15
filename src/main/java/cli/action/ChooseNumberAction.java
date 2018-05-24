@@ -1,17 +1,16 @@
 package cli.action;
 
 import cli.menu.ChooseNumberMenu;
-import game.Game;
+import game.BoardGame;
 import io.bretty.console.view.ActionView;
-import io.bretty.console.view.MenuView;
 
 
 public class ChooseNumberAction extends ActionView {
     private Integer numberChosen;
-    private Game puzzle;
+    private BoardGame puzzle;
 
 
-    public ChooseNumberAction(Game puzzle, Integer num) {
+    public ChooseNumberAction(BoardGame puzzle, Integer num) {
         super("The chosen number is: " + num, "Move number: " + num);
         this.puzzle = puzzle;
         this.numberChosen = num;

@@ -1,8 +1,7 @@
 package cli.menu;
 
 import cli.action.NewPuzzleAction;
-import game.PuzzleGame;
-import io.bretty.console.view.ActionView;
+import game.PuzzleBoardGame;
 import io.bretty.console.view.MenuView;
 
 public class MainPuzzleMenu extends MenuView {
@@ -11,7 +10,7 @@ public class MainPuzzleMenu extends MenuView {
     }
 
     public MainPuzzleMenu(){
-        super(PuzzleGame.title, "");
+        super(PuzzleBoardGame.title, "");
         this.addMenuItem(new NewPuzzleAction());
     }
 

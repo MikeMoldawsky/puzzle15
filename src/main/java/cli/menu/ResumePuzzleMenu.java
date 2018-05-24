@@ -8,7 +8,7 @@ public class ResumePuzzleMenu extends MenuView {
     }
 
     public ResumePuzzleMenu(){
-        this("Game interrupted what would you like to do?", "");
+        this("BoardGame interrupted what would you like to do?", "");
     }
 
     @Override
